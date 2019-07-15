@@ -3,12 +3,19 @@ Matlab code for egocentric boundary cell identification in freely behaving anima
 If you use this code, please reference the originating article:
 
 To run, add these files to your Matlab directory. Then, create an struct with the following fields:
+
 x - The animal's x position over time
+
 y - Animals' y position over time
+
 md - Movement direction (or head direction) in radians
+
 spike - Binarized spike train 
+
 ts - time stamp
+
 All fields should be the same length (eg: Nx1 where N is the number of samples in the session)
+
 
 Then, run:
 ```matlab
