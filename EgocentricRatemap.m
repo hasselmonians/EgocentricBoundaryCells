@@ -199,8 +199,8 @@ end
 function edg = splitter(QP)
     
     inds = find(isnan(QP(:,1)));
-    xs=CMBHOME.Utils.SplitVec(QP(:,1), @(x) isnan(x));
-    ys=CMBHOME.Utils.SplitVec(QP(:,2), @(x) isnan(x));
+    xs=SplitVec(QP(:,1), @(x) isnan(x));
+    ys=SplitVec(QP(:,2), @(x) isnan(x));
     
     % split corners
     for m = 1:size(xs,1)
