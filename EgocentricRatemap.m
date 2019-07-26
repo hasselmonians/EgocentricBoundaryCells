@@ -89,6 +89,9 @@ function [out] = EgocentricRatemap(root, varargin)
     % bring back to original dims
     occ = occ(:,1:end-1); occ=occ';
     nspk = nspk(:,1:end-1); nspk=nspk';
+    
+    occ_ns = occ;
+    nspk_ns = nspk;
 
     rm_ns = (nspk./occ); % non-smoothed ratemap
 
@@ -109,6 +112,8 @@ function [out] = EgocentricRatemap(root, varargin)
 
     %% package the output
     out.rm_ns = rm_ns;
+    out.occ_ns = occ_ns;
+    out.nspk_ns = nspk_ns;
     out.occ = occ;
     out.nspk = nspk;
     out.rm = rm;
