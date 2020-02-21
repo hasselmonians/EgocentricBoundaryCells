@@ -23,3 +23,5 @@ plotEBC(r, out)
 ```
 
 If you use this code, please reference the originating article: Hinman, Chapman, and Hasselmo, “Neuronal Representation of Environmental Boundaries in Egocentric Coordinates.” Nature Communications, 2019. https://www.nature.com/articles/s41467-019-10722-y
+
+Toolbox has also been used in: Andrew S. Alexander, Lucas C. Carstensen, James R. Hinman, Florian Raudies, G. William Chapman and Michael E. Hasselmo. "Egocentric boundary vector tuning of the retrosplenial cortex". Science Advances, February 2020. https://advances.sciencemag.org/content/6/8/eaaz2322.abstract
