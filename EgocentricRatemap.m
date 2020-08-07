@@ -13,7 +13,7 @@ function [out] = EgocentricRatemap(root, varargin)
     p.addParameter('distanceBins', 0:1:50);            % How far to look (cm)
     p.addParameter('boundaryMode', 0);                 % 0-> autolines, 1-> click, mat->useit
     p.addParameter('smoothKernel', [5 5 5])
-    p.addParameter('sampRate', 30)                     % Samples per second
+%     p.addParameter('sampRate', 30)                     % Samples per second
     p.parse(varargin{:});
 
     fn = fieldnames(p.Results);
@@ -94,7 +94,7 @@ function [out] = EgocentricRatemap(root, varargin)
     occ_ns = occ;
     nspk_ns = nspk;
 
-    rm_ns = (nspk./occ).*sampRate; % non-smoothed ratemap
+    rm_ns = (nspk./occ); % non-smoothed ratemap
 
     %% Smoothing
     occ = [occ occ occ];
@@ -106,7 +106,7 @@ function [out] = EgocentricRatemap(root, varargin)
     nspk = SmoothMat(nspk,smoothKernel(1:2),smoothKernel(3));   % Smooth it
     nspk = nspk(:,nd+1:2*nd);                       % bring it back
 
-    rm = (nspk./occ).*sampRate;
+    rm = (nspk./occ);
 
     %% package the output
     out.rm_ns = rm_ns;
