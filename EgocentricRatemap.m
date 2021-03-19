@@ -247,10 +247,8 @@ function [dis, ex, ey] = calcDistance(rx,ry,md, QP, degSamp)
     dir = dis;
     
     for i = 1:size(edg,1)
-        sp = squeeze(edg(i,:,1));
-        ep = squeeze(edg(i,:,2));
-        x1 = sp(1); x2 = sp(2);
-        y1 = ep(1); y2 = ep(2);
+        x1=edg(i,1,1);x2=edg(i,1,2);
+        y1=edg(i,2,1);y2=edg(i,2,2);
         for h = 1:numel(degs)
             mdof=degs(h);
             y3=ry;x3=rx;
