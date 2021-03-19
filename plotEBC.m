@@ -56,13 +56,26 @@ function plotEBC(root,out,fign)
     
     %% scatter of spike directions
     figure(fign); ax = subplot(1,4,4); hold on;
-    plot(root.x,root.y,'Color',[.7 .7 .7])
-    colormap(ax,hsv)
-    xlim([min(root.x) max(root.x)]); ylim([min(root.y) max(root.y)])
-    cx = root.x(root.spike == 1);
-    cy = root.y(root.spike == 1);
-    ch = root.md(root.spike == 1);
-    scatter(cx,cy,15,ch,'filled')
+    
+    if strcmp(class(root), 'CMBHOME.Session')
+        import CMBHOME.Utils.ContinuizeEpochs
+        plot(ContinuizeEpochs(root.x),ContinuizeEpochs(root.y),'Color',[.7 .7 .7])
+        colormap(ax,hsv)
+        xlim([min(ContinuizeEpochs(root.x)) max(ContinuizeEpochs(root.x))]);
+        ylim([min(ContinuizeEpochs(root.y)) max(ContinuizeEpochs(root.y))]);
+        cx = ContinuizeEpochs(root.cel_x);
+        cy = ContinuizeEpochs(root.cel_y);
+        ch = ContinuizeEpochs(root.cel_headdir);
+        scatter(cx,cy,15,ch,'filled')
+    else
+        plot(root.x,root.y,'Color',[.7 .7 .7])
+        colormap(ax,hsv)
+        xlim([min(root.x) max(root.x)]); ylim([min(root.y) max(root.y)])
+        cx = root.x(root.spike == 1);
+        cy = root.y(root.spike == 1);
+        ch = root.md(root.spike == 1);
+        scatter(cx,cy,15,ch,'filled')
+    end
     scatter(out.QP(:,1),out.QP(:,2),30,'k','filled')
     set(gca,'YDir','Normal')
     title('Trajectory')

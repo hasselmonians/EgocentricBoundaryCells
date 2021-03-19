@@ -23,12 +23,9 @@ function [out] = EgocentricRatemap(root, varargin)
 
     %% Unpack behavioral information
     if strcmp(class(root), 'CMBHOME.Session')
-        rx = CMBHOME.Utils.ContinuizeEpochs(root.x) * root.spatial_scale;
-        ry = CMBHOME.Utils.ContinuizeEpochs(root.y) * root.spatial_scale;
+        rx = CMBHOME.Utils.ContinuizeEpochs(root.x);
+        ry = CMBHOME.Utils.ContinuizeEpochs(root.y);
         md = CMBHOME.Utils.ContinuizeEpochs(root.headdir);
-        if max(md) > 2*pi
-            md = deg2rad(md);
-        end
         ts = CMBHOME.Utils.ContinuizeEpochs(root.ts);
         sts = CMBHOME.Utils.ContinuizeEpochs(root.cel_ts);
         spk = histc(sts, ts);
@@ -247,10 +244,9 @@ function [dis, ex, ey] = calcDistance(rx,ry,md, QP, degSamp)
     dir = dis;
     
     for i = 1:size(edg,1)
-        sp = squeeze(edg(i,:,1));
-        ep = squeeze(edg(i,:,2));
-        x1 = sp(1); x2 = sp(2);
-        y1 = ep(1); y2 = ep(2);
+        x1=edg(i,1,1);x2=edg(i,1,2);
+        y1=edg(i,2,1);y2=edg(i,2,2);
+        plot([x1,y1], [x2,y2])
         for h = 1:numel(degs)
             mdof=degs(h);
             y3=ry;x3=rx;
