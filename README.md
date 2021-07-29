@@ -21,7 +21,11 @@ Finally,to get egocentric responses, run:
 out = EgocentricRatemap(r); % where r is your behavioral/ephys struct
 plotEBC(r, out)
 ```
+## Parametric Generalized Linear Model
+In an additional paper (AlexanderHasselmo2020), we designed a generalized linear model to test for significance of EBC tuning. For simplicity, the predictor here is angle and distance to the center of the environment, rather than to every point on the walls. This code lies in `ebcTest.m` and relies on the additional "pippin"(https://github.com/hasselmonians/pippin) package, which simply wraps Matlab's glmfit functionality. 
 
+
+## Credit
 If you use this code, please reference the originating article: Hinman, Chapman, and Hasselmo, “Neuronal Representation of Environmental Boundaries in Egocentric Coordinates.” Nature Communications, 2019. https://www.nature.com/articles/s41467-019-10722-y
 
-Toolbox has also been used in: Andrew S. Alexander, Lucas C. Carstensen, James R. Hinman, Florian Raudies, G. William Chapman and Michael E. Hasselmo. "Egocentric boundary vector tuning of the retrosplenial cortex". Science Advances, February 2020. https://advances.sciencemag.org/content/6/8/eaaz2322.abstract
+If you utilize the statistical test, please additionally cite the paper it was created for: Andrew S. Alexander, Lucas C. Carstensen, James R. Hinman, Florian Raudies, G. William Chapman and Michael E. Hasselmo. "Egocentric boundary vector tuning of the retrosplenial cortex". Science Advances, February 2020. https://advances.sciencemag.org/content/6/8/eaaz2322.abstract
