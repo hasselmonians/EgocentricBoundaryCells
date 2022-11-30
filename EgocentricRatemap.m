@@ -23,8 +23,8 @@ function [out] = EgocentricRatemap(root, varargin)
 
     %% Unpack behavioral information
     if strcmp(class(root), 'CMBHOME.Session')
-        rx = CMBHOME.Utils.ContinuizeEpochs(root.x) * root.spatial_scale;
-        ry = CMBHOME.Utils.ContinuizeEpochs(root.y) * root.spatial_scale;
+        rx = CMBHOME.Utils.ContinuizeEpochs(root.x);% * root.spatial_scale;
+        ry = CMBHOME.Utils.ContinuizeEpochs(root.y);% * root.spatial_scale;
         md = CMBHOME.Utils.ContinuizeEpochs(root.headdir);
         if max(md) > 2*pi
             md = deg2rad(md);
@@ -32,7 +32,7 @@ function [out] = EgocentricRatemap(root, varargin)
         ts = CMBHOME.Utils.ContinuizeEpochs(root.ts);
         sts = CMBHOME.Utils.ContinuizeEpochs(root.cel_ts);
         spk = histc(sts, ts);
-        
+        distanceBins = distanceBins/root.spatial_scale;
     else
         rx = root.x;      % x position in cm or pixels
         ry = root.y;      % y position in cm or pixels
